@@ -306,6 +306,13 @@ contract DSCEngine is ReentrancyGuard {
     }
 
     function _burnDsc(uint256 amountDscToBurn, address onBehalfOf, address dscFrom) private {
+        //This check ensures that liquidators can't burn more than the DSC minted by the user
+        if (amountDscToBurn > s_DscMinted[onBehalfOf]) {
+        revert DSCEngine__BurnAmountExceedsBalance();
+        }
+        if (amountDscToBurn > s_DscMinted[onBehalfOf]) {
+        revert DSCEngine__BurnAmountExceedsBalance();
+        }
         s_DSCMinted[onBehalfOf] -= amountDscToBurn;
 
         bool success = i_dsc.transferFrom(dscFrom, address(this), amountDscToBurn);
