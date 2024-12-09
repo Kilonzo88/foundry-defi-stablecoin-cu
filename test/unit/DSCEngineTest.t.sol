@@ -31,7 +31,7 @@ contract DSCEngineTest is StdCheats, Test {
     uint256 public deployerKey;
 
     uint256 amountCollateral = 10 ether;
-    uint256 amountToMint = 100 ether;
+    uint256 amountToMint = 100 Dsc;
     address public user = address(1);
 
     uint256 public constant STARTING_USER_BALANCE = 10 ether;
